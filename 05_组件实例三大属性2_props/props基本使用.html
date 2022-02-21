@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+
+
+        class Person extends React.Component{
+            
+            // 初始化状态
+            
+            // 自定义方法----要用赋值语句的形式+箭头函数
+
+            
+            render(){
+                const {name,age,gender} = this.props
+                return (
+                    <ul>
+                        <li>name:{name}</li>
+                        <li>age:{age+1}</li>
+                        <li>gender:{gender}</li>
+                    </ul>
+                )
+            }
+        }
+        //渲染到页面
+        const data={name:"shuxian",age:20,gender:"female"}
+        const data1={name:"huaxian",age:22,gender:"female"}
+        const data2={name:"shuxian",age:23,gender:"female"}
+        // ReactDOM.render(<Person name="yulan" age="20" gender="female"/>,document.getElementById("test1"))
+        ReactDOM.render(<Person name="yulan" age={20} gender="female"/>,document.getElementById("test1"))
+        ReactDOM.render(<Person {...data1}/>,document.getElementById("test2"))
+        ReactDOM.render(<Person {...data2}/>,document.getElementById("test3"))
+
+        
+    </script>
+
+</body>
+
+</html>
