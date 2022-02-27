@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react 事件处理</title>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- <input ref={c=>this.input1=c} type="text" placeholder="点击按钮提示数据"/> 箭头函数参数仅有1个圆括号可以省略,只有一个函数语句,花括号可以省略-->
+    <!-- 1.内联函数ref 初始化先执行一次. -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+
+        class Demo extends React.Component{
+            /* 
+            1.通过onXxx属性指定事件处理函数注意大小写
+                a.React使用
+             */
+
+            myRef=React.createRef()
+            myRef2=React.createRef()
+            showData=()=>{
+                const {current}=this.myRef2
+                alert(current.value)
+               
+            }
+            showData2=(event)=>{
+
+                // const {current}=this.myRef
+                // alert(current.value)
+                alert(event.target.value)
+               
+            }
+            
+            render(){
+                return(
+                <div>
+                    <input ref={this.myRef2} type="text" placeholder="点击按钮提示数据"/>
+                    <button onClick={this.showData}>点我提示左侧数据</button>
+                    <input  onBlur={this.showData2} type="text" placeholder="失去焦点提示数据"/>
+
+                </div>
+                )
+            }
+        }
+
+        //渲染组件到页面
+        ReactDOM.render(<Demo/>,document.getElementById("test"))
+
+
+    </script>
+
+</body>
+
+</html>
