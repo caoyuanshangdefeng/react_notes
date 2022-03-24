@@ -1,30 +1,30 @@
-import React,{Component} from 'react'
-// import './App.css'
-import List from './components/List';
-import Search from './components/Search';
+import React, { Component } from 'react'
+import List from './pages/List'
+import Search from './pages/Search'
 
-
-
-//创建并暴露App组件
 export default class App extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-    // state = {  }
+
+  state = {
+    users: [],
+    isFirst: true,
+    isLoading: false,
+    err: '',
+  }
+
+  updateAppState=(stateObj) => {
+    this.setState(stateObj)
+    console.log("####",stateObj);
+    console.log("@@@@@",this.state);
     
-    render() { 
-        return ( 
-            <div className="container">
-                <Search/>
-                <List/>
-            </div>
-            
-        );
-    }
+
+  }
+
+  render() {
+    return (
+      <div>
+        <Search updateAppState={this.updateAppState} />
+        <List {...this.state} />
+      </div>
+    )
+  }
 }
-
-
-
-//暴露App组件
-// export default App;
-
