@@ -1,10 +1,10 @@
-import React, { Component, lazy, Suspense } from 'react'
+import React, { Component ,lazy ,Suspense} from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 // import Home from './Home';
 // import About from './About';
 
-const Home = lazy(() => { import('./Home') })
-const About = lazy(() => { import('./About') })
+const Home = lazy(() => import('./Home'))
+const About = lazy(() => import('./About'))
 
 
 
@@ -43,10 +43,10 @@ class DemoLazyload extends Component {
                             
                             
                             */}
-<Suspense fallback={<h1>loading......</h1>}>
+
                                 <Link className="list-group-item" to='/about'>About</Link>
                                 <Link className="list-group-item" to='/home'>Home</Link>
-                                </Suspense>
+
 
 
 
@@ -61,18 +61,30 @@ class DemoLazyload extends Component {
                                     {/* 注册路由 
                                 exact={true}精准匹配
                                 */}
-                                    
-                                        <Routes>
-                                            {/* <Route exact={true} path="/about" element={<About/>}/>
+                                  
+                                        
+                                            <Routes>
+                                                {/* <Route exact={true} path="/about" element={<About/>}/>
                                     <Route exact={true} path="/home" element={<Home/>}/> */}
-                                            {/* <Route path="/" element={<Home />} /> */}
-                                            <Route path="/home" element={<Home />} />
-                                            <Route path="/about" element={<About />} />
+                                                {/* <Route path="/" element={<Home />} /> */}
 
-                                            
+                                                <Route path="/home" element={
+                                                <Suspense fallback={<h1>loading......</h1>}>
+                                                    <Home />
+                                                </Suspense>
+                                                } />
+                                                <Route path="/about" element={
+                                                <Suspense fallback={<h1>loading......</h1>}>
+                                                    <About />
+                                                </Suspense>} />
 
-                                        </Routes>
-                                   
+
+
+
+                                            </Routes>
+                                        
+                                  
+
 
                                 </div>
                             </div>
@@ -80,7 +92,7 @@ class DemoLazyload extends Component {
                     </div>
 
                 </div>
-            </div>
+            </div >
 
         );
     }
