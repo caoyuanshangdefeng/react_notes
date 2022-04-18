@@ -1,4 +1,4 @@
-1.setState
+一.setState
     (1).setState(stateChange,[callback])------对象式的setState
         1.stateChange为状态改变对象(该对象可以体现出状态的更改)
         2.callback是可选的回调函数,它在状态更新完毕,界面也更新后(render调用后)才被调用
@@ -19,7 +19,7 @@
 
 
 
-2.lazyLoad
+二.lazyLoad
 路由组件的lazyLoad
 //1.通过React的lazy函数配合import()函数动态加载路由组件===>路由组件代码会被分开打包
 const Login = lazy(()=>import('@/pages/Login'))
@@ -33,7 +33,7 @@ const Login = lazy(()=>import('@/pages/Login'))
 
 
 
-3.Hooks
+三.Hooks
 1.React Hook/Hooks是什么?
 (1).Hook是React 16.8.x版本增加的特性/新语法
 (2).可以在函数组件中使用state以及其他的React特性
@@ -75,8 +75,77 @@ useEffect(()=>{
     componentDidUpdate()
     componentWillUnmount()
     
+5.Ref Hook
+(1).Ref Hook 可以在函数组件中存储/查找组件内的标签或任意其他数据
+(2).语法 const refContainer=useRef()
+(3).作用: 保存标签对象,功能与React.createRef()一样
 
 
+Warning: You are calling ReactDOM.unmountComponentAtNode() on a container th
+
+四.Fragment[ˈfræɡmənt]  n. 碎片；片段；残存部分 v. （使）破碎，分裂
+
+
+五.Context
+理解:一种组件间通信方式,常用于祖组件与后代组件之间的通信
+
+A--->B--->C
+AB为父子组件,BC为父子组件,AC为祖孙组件
+
+使用:
+1).创建context容器对象
+2).渲染子组件时,外面包裹xxxContext.Provider,通过value属性给后代组件传递数据:
+<xxxContext.Provider value={data}>
+    子组件
+
+</xxxContext.Provider>
+
+3).后代组件读取数据:
+ //第一种方式:适用于类组件
+ static contextType = xxxContext //声明接收context
+ this.context //读取context中的value值
+
+ //第二种方式
+<xxxContext.Consumer>
+    {
+        value=>(
+            //value就会context中的value数据
+            要显示的内容
+        )
+    }
+<\xxxContext.Consumer>
+
+
+
+bcc
+
+六.组件优化
+Component的2个问题
+1.只要执行setState(),即使不改变状态数据,组件也会重新render()
+2.只当前组件重新render(),就会从新render子组件===>效率低
+
+效率高的做法
+只有当组件的state或props数据发生改变时才重新render()
+
+原因
+Component中的shouldComponentUpdate()总是返回true
+
+解决
+办法1:
+    重写shouldComponentUpdate()方法
+    比较新旧state或props数据,如果有变化才返回true,反之返回False
+
+办法2:
+    使用PureComponent
+    PureComponent重写了shouldComponentUpdate()方法,只有state/props数据有变化才返回true
+    注意:
+        只是进行state和props数据的浅比较,如果只是数据对象内部数据变了,返回false
+        不要直接修改state数据,而是要生产新数据
+
+项目中一般使用PureComponent来优化
+
+
+!与===的优先级
 
 
 

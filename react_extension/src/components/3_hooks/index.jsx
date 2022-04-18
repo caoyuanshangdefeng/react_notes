@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Component } from 'react'
 import ReactDOM from 'react-dom'
 // 类组件
 // export default class DemoClass extends Component {
 //     state = { count: 0 }
+
+//     myRef=React.createRef()
 //     add = () => {
 //         this.setState(state => ({ count: state.count + 1 }))
 //     }
@@ -17,8 +20,12 @@ import ReactDOM from 'react-dom'
 //     componentWillUnmount(){
 //         clearInterval(this.timer)
 //     }
-//     unMount = () => {
+//     unmount = () => {
 //         ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+//     }
+//     show=() => {
+//         alert(this.myRef.current.value)
+//         this.myRef.current.value=''
 //     }
 
     
@@ -27,9 +34,12 @@ import ReactDOM from 'react-dom'
 
 //         return (
 //             <div>
+//                 <input type='text' ref={this.myRef} />
 //                 <h2>当前求和为 : {this.state.count}</h2>
 //                 <button onClick={this.add}>点我+1</button>
-//                 <button onClick={this.unMount}>卸载组件</button>
+//                 <button onClick={this.unmount}>卸载组件</button>
+//                 <button onClick={this.show}>点击当前数据</button>
+                
 //             </div>
 //         )
 //     }
@@ -41,6 +51,7 @@ function DemoFunc() {
     // console.log('Demo'); //Demo 调用1+n 次
     const [count, setCount] = React.useState(0)//单例模式
     const [name, setName] = React.useState('tom')//单例模式
+    const myRef=React.useRef()
 
     // a的值为一个数组,第一个值为0/1/2;第二个值为更新状态的方法
 
@@ -73,18 +84,20 @@ function DemoFunc() {
 
     function change() {
         setName('zhangsan')
-
-
-
     }
 
+    function show() {
+        alert(myRef.current.value)
+    }
     return (
         <div>
             <h2>当前求和为 : {count},{name}</h2>
+            <input type='text' ref={myRef}/>
 
             <button onClick={add}>点我+1</button>
             <button onClick={change}>点我改名</button>
             <button onClick={unmount}>卸载组件</button>
+            <button onClick={show}>点击提示数据</button>
         </div>
     )
 
