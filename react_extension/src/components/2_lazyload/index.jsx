@@ -38,10 +38,10 @@ class DemoLazyload extends Component {
                                 {/* 原生html中,靠<a>跳转不同的页面 */}
                                 {/* <a className="list-group-item" href="./about.html">About</a>
                             <a className="list-group-item active" href="./home.html">Home</a> */}
-                                {/* 在react中靠路由链接实现切换组件 
+                                {/* 在react中靠路由链接实现切换组件
                             to='/about';to尽量写小写,不写点(./about)
-                            
-                            
+
+
                             */}
 
                                 <Link className="list-group-item" to='/about'>About</Link>
@@ -58,11 +58,11 @@ class DemoLazyload extends Component {
                         <div className="col-xs-6">
                             <div className="panel">
                                 <div className="panel-body">
-                                    {/* 注册路由 
+                                    {/* 注册路由
                                 exact={true}精准匹配
                                 */}
-                                  
-                                        
+
+
                                             <Routes>
                                                 {/* <Route exact={true} path="/about" element={<About/>}/>
                                     <Route exact={true} path="/home" element={<Home/>}/> */}
@@ -82,8 +82,8 @@ class DemoLazyload extends Component {
 
 
                                             </Routes>
-                                        
-                                  
+
+
 
 
                                 </div>
