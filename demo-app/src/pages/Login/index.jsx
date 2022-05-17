@@ -1,4 +1,9 @@
-import React ,{useState,useRef} from 'react'
+import React ,{useState,useRef,lazy} from 'react'
+import { changeRoute } from 'store/reducers/routeSlice';
+import { useSelector, useDispatch } from 'react-redux'
+import Logout from 'pages/Logout';
+
+
 
 function Login () {
   const [username, setName] = useState('')
@@ -6,10 +11,20 @@ function Login () {
   const [display, setDispaly] = useState(false)
   const userRef=useRef()
   const pwdRef=useRef()
+  // const routes = useSelector((state) => state.routeLink.routing)
+  const dispatch = useDispatch()
 
   const accountLogin=() => {
     setName(userRef.current.value)
     setPwd(pwdRef.current.value)
+    dispatch(changeRoute([{
+
+        path: 'logout',
+
+        // element: lazy(() => import('pages/Logout'))
+        element: <Logout/>
+
+    }]))
 
   }
 

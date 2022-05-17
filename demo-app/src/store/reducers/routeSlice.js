@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import loginRouter from "router/login";
+
 
 export const routeLinkSlice =createSlice({
   name:'routeLink',
   initialState:{
-    routing:loginRouter
+    routing:[]
   },
   reducers:{
     changeRoute:(state,{payload})=>{
-      console.log(payload);
+      console.log('payload@@@@@@@@',payload);
 
       state.routing=payload
+      console.log('state.routing',state.routing);
     }
   }
 

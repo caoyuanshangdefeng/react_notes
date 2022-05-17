@@ -5,4 +5,8 @@ export default configureStore({
   reducer: {
     routeLink: routeLinkReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
