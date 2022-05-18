@@ -1,9 +1,9 @@
 import React ,{useState,useRef,lazy} from 'react'
 import { changeRoute } from 'store/reducers/routeSlice';
 import { useSelector, useDispatch } from 'react-redux'
-import Logout from 'pages/Logout';
-
-
+import { setToken } from 'utils/auth';
+import { useNavigate } from 'react-router-dom';
+import { demoRoutes} from "routes";
 
 function Login () {
   const [username, setName] = useState('')
@@ -11,20 +11,16 @@ function Login () {
   const [display, setDispaly] = useState(false)
   const userRef=useRef()
   const pwdRef=useRef()
-  // const routes = useSelector((state) => state.routeLink.routing)
+
   const dispatch = useDispatch()
+  const navigate=useNavigate()
 
   const accountLogin=() => {
     setName(userRef.current.value)
     setPwd(pwdRef.current.value)
-    dispatch(changeRoute([{
-
-        path: 'logout',
-
-        // element: lazy(() => import('pages/Logout'))
-        element: <Logout/>
-
-    }]))
+    setToken('112233445566')
+    navigate('/')
+    dispatch(changeRoute(demoRoutes))
 
   }
 
@@ -38,7 +34,7 @@ function Login () {
     <div>
       <span>username:{username};password:{password}</span>
       <div><input ref={userRef} type='text' placeholder='Please Input Username' /></div>
-      <div><input ref={pwdRef} type={display ? 'text' : 'password'} placeholder='Please Input Password' /></div><div><button onClick={showPassword}></button></div>
+      <div><input ref={pwdRef} type={display ? 'text' : 'password'} placeholder='Please Input Password' /></div><div><button onClick={showPassword}>showPwd</button></div>
       <button onClick={accountLogin}>Login</button>
 
     </div>

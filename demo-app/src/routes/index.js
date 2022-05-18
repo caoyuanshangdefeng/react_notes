@@ -3,7 +3,12 @@ import PageNotFound from 'pages/PageNotFound'
 import React,{ lazy } from "react"
 import { Navigate } from "react-router-dom"
 import Demo from "pages/Demo";
+import Logout from "pages/Logout";
 export const commonRoutes = [
+  {
+    path: '/',
+    element: <Navigate to="/login"/>
+  },
 
   {
     path: '/login',
@@ -13,33 +18,37 @@ export const commonRoutes = [
   },
   {
     path: '/404',
-
-    // element: lazy(() => import('pages/Login'))
     element: <PageNotFound/>
   },
-  // {
-  //   path: '*',
-
-  //   // element: lazy(() => import('pages/Login'))
-  //   element: <Navigate to="/404"/>
-  // }
+  {
+    path: '/*',
+    element: <Navigate to="/404"/>
+  }
 ]
 
 
 export const userRoutes = [
   {
-    path: '/',
-
-    // element: lazy(() => import('pages/Login'))
-    element: <Navigate to="/demo"/>
+    path: '/404',
+    element: <PageNotFound/>
   },
-
   {
-    path: '/demo',
-
-    // element: lazy(() => import('pages/Login'))
-    element: <Demo/>
+    path: '/*',
+    element: <Navigate to="/404"/>
   }
 
+]
+
+
+
+export const demoRoutes=[
+  {
+    path: '/',
+    element: <Navigate to="/demo"/>
+  },
+  {
+    path: '/demo',
+    element: <Logout/>
+  }
 ]
 
