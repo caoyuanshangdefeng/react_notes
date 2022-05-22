@@ -1,6 +1,6 @@
 /****   http.js   ****/
 // Import the packaged axios instance
-import request from './request'
+import request from './axios'
 
 const http ={
     /**

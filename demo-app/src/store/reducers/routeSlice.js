@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { demoRoutes,userRoutes } from "routes";
+import { baseRoutes} from "@/routes";
 
 
 export const routeLinkSlice =createSlice({
   name:'routeLink',
   initialState:{
-    routing:userRoutes
+    routing:[]
   },
   reducers:{
 
@@ -16,7 +16,7 @@ export const routeLinkSlice =createSlice({
       console.log(state.routing);
       console.log('payload@@@@@@@@',payload);
 
-      state.routing=[...userRoutes,...payload]
+      state.routing=[...baseRoutes.baseRoutes,...payload.routerMenu]
 
     }
   }

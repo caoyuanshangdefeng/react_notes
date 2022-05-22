@@ -1,9 +1,64 @@
-import React from 'react'
+
+import React, { useState } from 'react'
+import { Link} from 'react-router-dom'
+
 
 export default function Demo() {
+  const [messages] = useState([
+    { id: '001', title: '消息1', content: '锄禾日当午' },
+    { id: '002', title: '消息2', content: '汗滴禾下土' },
+    { id: '003', title: '消息3', content: '谁知盘中餐' },
+    { id: '004', title: '消息4', content: '粒粒皆辛苦' },
+  ])
+//   componentDidMount(){
+
+//     //获取缓存的数据
+
+//     var todolist=storage.get('keyName');
+
+//     if(todolist){
+
+//         this.setState({
+
+//             list:todolist
+//         })
+//     }
+
+// }
   return (
     <div>
       <h2>Demo Component</h2>
+      <div>
+      <h2>我是Message</h2>
+      <div>
+        <ul>
+          {messages.map((m) => {
+            return (
+              // 路由链接
+              <li key={m.id}>
+                {/* 路由传参 */}
+
+                {/* <Link to='detail'> */}
+                {/* state参数 */}
+
+                <Link to='detail' state={{
+                  id:m.id,
+                  title:m.title,
+                  content:m.content,
+                }}>
+                  {m.title}
+                </Link>
+              </li>
+            )
+
+          })}
+        </ul>
+        <hr />
+        {/* 指定路由组件的展示位置 */}
+        {/* <Outlet /> */}
+      </div>
+    </div>
+
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React ,{useState,useRef,lazy} from 'react'
-import { changeRoute } from 'store/reducers/routeSlice';
+import { changeRoute } from '@/store/reducers/routeSlice';
 import { useSelector, useDispatch } from 'react-redux'
-import { setToken } from 'utils/auth';
+import { setToken } from '@/utils/auth';
 import { useNavigate } from 'react-router-dom';
-import { demoRoutes} from "routes";
+import { demoRoutes,menuList} from "@/routes";
 
 function Login () {
   const [username, setName] = useState('')
@@ -20,7 +20,8 @@ function Login () {
     setPwd(pwdRef.current.value)
     setToken('112233445566')
     navigate('/')
-    dispatch(changeRoute(demoRoutes))
+    // dispatch(changeRoute(demoRoutes))
+    dispatch(changeRoute(menuList()))
 
   }
 
