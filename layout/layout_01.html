@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.top {
+				width: 100%;
+				height: 50px;
+				background-color: palegreen;
+			}
+
+			.center {
+				display: flex;
+				position: absolute;
+				top: 50px;
+				bottom: 50px;
+				width: 100%;
+				background-color: pink;
+			}
+
+			.left {
+				/* flex: 1; */
+				width: 200px;
+
+				background-color: paleturquoise;
+			}
+
+			.right{
+				/* flex: 4; */
+				flex: 1;
+				background-color: orange;
+			}
+
+			.bottom {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 50px;
+				background-color: palegreen;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="top">
+			<h4>我是top nav</h4>
+		</div>
+
+		<div class="center">
+			<div class="left">
+				<h4>我是left</h4>
+			</div>
+
+			<div class="right">
+				<h4>我是right</h4>
+			</div>
+		</div>
+
+		<div class="bottom">
+			<h4>我是bottom nav</h4>
+		</div>
+
+	</body>
+</html>
+
