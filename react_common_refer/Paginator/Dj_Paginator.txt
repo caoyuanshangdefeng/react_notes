@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+ 
+ 
+def get_page_list(datas, page_no=1, page_size=12):
+    """
+    分页数据
+    :param datas
+    :return:
+    """
+    result = {}
+    if page_no and page_size:
+        paginator = Paginator(datas, page_size)
+        try:
+            datas = paginator.page(page_no)
+        except PageNotAnInteger:
+            datas = paginator.page(1)
+        except EmptyPage:
+            datas = paginator.page(paginator.num_pages)
+        page = dict()
+        page['total'] = paginator.count
+        page['page_count'] = paginator.num_pages
+        page['page_no'] = int(page_no)
+        page['page_rows'] = range(paginator.num_pages)
+        result['page'] = page
+    result['datas'] = datas
+ 
+    return result
+    
+    
+    
+   from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import JsonResponse
+
+@csrf_exempt
+def get_book_info(request):
+"""
+获取书籍信息
+:param request
+:return:
+"""
+try:
+	page_num = request.GET.get("pageNum")
+	page_size = request.GET.get("pageSize")
+	query_data = BookInfo.objects.filter(author="巴金").values()
+	total = query_data.count()
+	paginator = Paginator(query_data, page_size)
+except (OSError):
+	return JsonResponse({"data": [], "total": 0}, safe=False)
+# 校验 page_num是否为整数或者page_num大于页码数返回值为空
+try:
+	contacts = paginator.page(page_num)
+except PageNotAnInteger:
+	contacts = paginator.page(1)
+except EmptyPage:
+	contacts = paginator.page(paginator.num_pages)
+return JsonResponse({"data": list(contacts), "total": total}, safe=False)
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
