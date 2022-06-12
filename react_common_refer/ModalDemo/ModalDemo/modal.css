@@ -17,7 +17,7 @@ mask覆盖在其他元素上面z-index: 1000;
  */
 .modal-container {
 
-  position: fixed;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  background: white;  min-width: 500px;  border-radius: 4px;
+  position: fixed;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  background: rgb(20, 228, 30);  min-width: 500px;  border-radius: 4px;
   z-index: 1001;
 }
 .modal-header{

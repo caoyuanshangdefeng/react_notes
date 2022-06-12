@@ -1,9 +1,10 @@
 .page{
-  width: 50px;
+  display: flex;
+  /* width: 50px; */
   height: 25px;
 }
 
 .item{
-  width: 25px;
+  width: 75px;
   height: 25px;
 }

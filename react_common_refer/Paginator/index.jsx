@@ -1,6 +1,6 @@
 import React from 'react'
 import './pageCom.css'
-let Component = React.Component;
+// let Component = React.Component;
 let Fragment = React.Fragment;
 
 function PageItem(props) {
@@ -15,9 +15,10 @@ function PageItem(props) {
 	);
 }
 
-function Page(props) {
+function Paginator(props) {
 	let handleClick = (e) => {
 		let txt = e.target.innerText;
+    console.log(txt);
 		let { index, toggle } = props;
 		if (e.target.nodeName === "BUTTON") {
 			if (txt === "上一页") {
@@ -51,26 +52,6 @@ function Page(props) {
 		</div>
 	);
 }
-class App extends Component {
-	state = {
-		index: 1,
-		total: 10
-	};
-	render() {
-		return (
-			<div>
-				<Page
-					index={this.state.index}
-					total={this.state.total}
-					toggle={this.toggle}
-				/>
-			</div>
-		);
-	}
-	toggle = (i) => {
-		this.setState({ index: i });
-		console.log(i);
-	};
-}
-const appDom = document.getElementById("app");
-ReactDOM.render(<App />, appDom);
+export default Paginator
+// const appDom = document.getElementById("app");
+// ReactDOM.render(<App />, appDom);
