@@ -1,0 +1,6 @@
+class FileUpload(APIView):
+    def post(self, request):
+        myFile = request.FILES.get("file",None)
+        print(myFile)
+        data = json.dumps({'flag':str(uuid.uuid4())})
+        return HttpResponse(data)

@@ -1,0 +1,83 @@
+import React, { Component } from 'react'
+import Axios from 'axios'
+
+export default class upload extends Component {
+   
+    uploadFile = ()=>{
+        let file1 = document.querySelector('#input').files[0]
+        let formdata = new FormData()
+        formdata.append("file", file1)   
+        Axios({
+            url:'/api/importExcel',
+            method: 'post',
+            headers:{'Content-Type':'multipart/form-data'},
+            data:formdata
+        }).then(
+            request =>{
+                console.log(request.data)
+            },
+            error =>{
+                console.log(error.data)
+            }
+        )
+    }
+
+    render() {
+        return (
+            <div>
+                 <input type="file" id="input" ></input>
+                 <button onClick={this.uploadFile}>上传</button>
+            </div>
+        )
+    }
+}
+
+
+
+
+import React, { Component } from 'react'
+import Axios from 'axios'
+
+
+
+export default class download extends Component {
+
+    downLoad = () => {
+        Axios(
+            {
+                url: '/api/exprotFile',
+                method: 'post',
+                responseType: 'blob',
+                data: { 'name': '123' }
+            }
+        ).then(
+            response => {
+                let url = window.URL.createObjectURL(response.data);
+                let eleLink = document.createElement('a');
+                eleLink.href = url;
+                eleLink.download = `${response.headers.filename}`;
+                document.body.appendChild(eleLink);
+                eleLink.click();
+                window.URL.revokeObjectURL(url);
+            },
+            error => {
+                console.log(error.data)
+            }
+        )
+    }
+
+    render() {
+
+
+        return (
+            <div>
+                <button onClick={this.downLoad}> 下 载 </button>
+            </div>
+        )
+    }
+}
+
+
+
+https://www.jianshu.com/p/cd377ed5d6d2
+
