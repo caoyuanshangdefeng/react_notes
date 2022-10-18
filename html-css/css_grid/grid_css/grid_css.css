@@ -1,0 +1,123 @@
+.main {
+  display: grid;
+  width: 600px;
+  height: 600px;
+  border: 10px solid skyblue;
+  /* 行属性 3行*/
+  /* grid-template-columns:100px 100px 100px; */
+
+  /*  repeat 为简写模式 */
+  /* grid-template-columns:repeat(4,100px); */
+
+  /*  auto-fill 不设置宽高，自动填充*/
+  /* grid-template-columns:repeat(auto-fill,100px); */
+
+  /* 1fr 2fr 3fr 分别占600px的1份，2份，3份 比例关系 */
+  /* grid-template-columns:1fr 2fr 3fr;   */
+
+  /* 当页面驱动容器变小时，第二列的宽度最少的150px */
+  /* grid-template-columns:1fr minmax(150px,1fr); */
+
+  /* 左右两列宽度是100px，中间是自动 注：不设定宽和高*/
+  /* grid-template-columns:100px auto 100px; */
+
+  /* [c*] 网格线 */
+  grid-template-columns: [c1]100px [c2] 100px [c3] 100px [c4];
+
+  /* 列属性；4行 */
+  grid-template-rows: 100px 100px 100px 100px;
+  /* grid-template-rows: 100px 100px 100px; */
+
+  /* 行间距 */
+  /* row-gap:20px; */
+
+  /*  列间距*/
+  /* column-gap:20px; */
+
+  /* row-gap 和column-gap 合并 gap:行间距 列间距*/
+  gap: 20px;
+
+  /* 区域 */
+  grid-template-areas: 'a b c''d e f''g h i';
+
+  /* grid-auto-flow:row / column; */
+  grid-auto-flow:row;
+
+  /* 容器属性，设置单元格内容的水平和垂直对齐方式
+  justify-items(水平方向）/align-items（垂直方向）
+  items:容器中所有的子元素
+  justify-items:start|end|center|strech
+  */
+  /* justify-items:center;
+  align-items:center; */
+
+
+
+  /*
+  容器属性 justify-content（水平方向）/ align-content（垂直方向）
+  设置整个内容区域的水平和垂直的对齐方式
+  justify-content: start | end | center | stretch | space-around | space-between |space-evenly;
+  align-content : start | end | center | stretch | space-around | space-between |space-evenly;
+   */
+
+   justify-content:space-center;
+
+   /* 容器属性grid-auto-columns/grid-auto-rows
+   用来设置多出来的项目宽和高
+   例如：
+   设置3*3的items
+    grid-template-columns: [c1]100px [c2] 100px [c3] 100px [c4];
+    grid-template-rows:100px 100px 100px;
+    实际有10个,整个属性就是设置多出来的item
+    使用grid-auto-rows:50px;则最后一个items的高度就是50px
+   */
+   grid-auto-rows:50px;
+}
+
+
+.item {
+  font-size: 50px;
+  background-color: #E91E63;
+  color: #fff;
+}
+
+.item-1 {
+  background-color: #ef342a;
+  grid-column:1/3;
+}
+
+.item-2 {
+  background-color: #b6de53;
+}
+
+.item-3 {
+  background-color: #22166d;
+}
+
+.item-4 {
+  background-color: #0f7fab;
+}
+
+.item-5 {
+  background-color: #efb0d5;
+}
+
+.item-6 {
+  background-color: #1d1415;
+}
+
+.item-7 {
+  background-color: #1ba64b;
+}
+
+.item-8 {
+  background-color: #c0eeca;
+}
+
+.item-9 {
+  background-color: #0ec88a;
+}
+
+.item-10 {
+  background-color: #0b6482;
+}
